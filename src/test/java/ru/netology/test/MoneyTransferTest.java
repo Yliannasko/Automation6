@@ -17,8 +17,8 @@ public class MoneyTransferTest {
     DashboardPage dashboardPage;
 
     @BeforeEach
-    void setup(){
-       var loginPage = open("http://localhost:9999", LoginPage.class);
+    void setup() {
+        var loginPage = open("http://localhost:9999", LoginPage.class);
         var authInfo = DataHelper.getAuthInfo();
         var verificationPage = loginPage.validLogin(authInfo);
         var verificationCode = getVerificationCode();
@@ -26,7 +26,7 @@ public class MoneyTransferTest {
     }
 
     @Test
-    void shouldTransferFromFirstToSecond(){
+    void shouldTransferFromFirstToSecond() {
         var firstCardInfo = getFirstCardInfo();
         var secondCardInfo = getSecondCardInfo();
         var firstCardBalance = dashboardPage.getCardBalance(firstCardInfo);
@@ -39,10 +39,11 @@ public class MoneyTransferTest {
         var actualBalanceFirstCard = dashboardPage.getCardBalance(firstCardInfo);
         var actualBalanceSecondCard = dashboardPage.getCardBalance(secondCardInfo);
         assertEquals(expectedBalanceFirstCard, actualBalanceFirstCard);
-        assertEquals(expectedBalanceSecondCard,actualBalanceSecondCard);
+        assertEquals(expectedBalanceSecondCard, actualBalanceSecondCard);
     }
+
     @Test
-    void shouldGetErrorMessageIfAmountMoreBalance(){
+    void shouldGetErrorMessageIfAmountMoreBalance() {
         var firstCardInfo = getFirstCardInfo();
         var secondCardInfo = getSecondCardInfo();
         var firstCardBalance = dashboardPage.getCardBalance(firstCardInfo);
